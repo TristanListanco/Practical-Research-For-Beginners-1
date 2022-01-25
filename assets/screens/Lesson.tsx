@@ -1,7 +1,7 @@
 import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import Colors from "../constants/colors";
-import React, { useCallback, useMemo, useRef } from "react";
+import React, { useCallback, useMemo, useRef, useState } from "react";
 import BottomSheet, {
 	BottomSheetBackdrop,
 	BottomSheetModal,
@@ -20,16 +20,22 @@ import {
 	TouchableOpacity,
 	NativeModules,
 } from "react-native";
+import Tts from "react-native-tts";
 import researchTopics from "../data/LessonsData";
 import { useTheme } from "../theme/ThemeProvider";
-interface Props{
-	route:any,
+
+Tts.setDefaultLanguage("en-US");
+Tts.setDefaultVoice("com.apple.ttsbundle.Moira-compact");
+Tts.setDefaultRate(0.5);
+Tts.setDefaultPitch(1.2);
+interface Props {
+	route: any;
 }
 
-
-const Lesson:React.FC<Props> = ({ route }) => {
+const Lesson: React.FC<Props> = ({ route }) => {
 	const navigation = useNavigation<any>();
 	const { colors, isDark } = useTheme();
+	const [isSpeaking, setIsSpeaking] = useState(false);
 	const { item } = route.params;
 	const bottomSheetModalRef = useRef<BottomSheetModal>(null);
 
@@ -61,8 +67,6 @@ const Lesson:React.FC<Props> = ({ route }) => {
 		console.log("handleSheetChanges", index);
 	}, []);
 
-
-
 	const { StatusBarManager } = NativeModules;
 	const STATUSBAR_HEIGHT = Platform.OS === "ios" ? 20 : StatusBarManager.HEIGHT;
 	return (
@@ -80,7 +84,7 @@ const Lesson:React.FC<Props> = ({ route }) => {
 				<View
 					style={{
 						marginTop: Platform.OS === "ios" ? 15 : STATUSBAR_HEIGHT,
-						paddingHorizontal:21,
+						paddingHorizontal: 21,
 					}}
 				>
 					<View
@@ -95,7 +99,7 @@ const Lesson:React.FC<Props> = ({ route }) => {
 							/>
 						</TouchableOpacity>
 						<TouchableOpacity>
-							<Feather name="book" size={24} style={{color:colors.text}} />
+							<Feather name="book" size={24} style={{ color: colors.text }} />
 						</TouchableOpacity>
 					</View>
 
@@ -213,7 +217,7 @@ const Lesson:React.FC<Props> = ({ route }) => {
 
 				{/* Modal */}
 				<BottomSheetModalProvider>
-					<View >
+					<View>
 						<BottomSheetModal
 							ref={bottomSheetModalRef}
 							index={1}
@@ -257,7 +261,7 @@ const styles = StyleSheet.create({
 	topicImage: {
 		alignSelf: "center",
 	},
-	
+
 	title: {
 		fontFamily: "SFProDisplay-Bold",
 		fontSize: 26,

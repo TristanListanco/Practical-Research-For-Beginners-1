@@ -1,6 +1,6 @@
 import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import Colors from "../../constants/colors";
+import Colors from "../constants/colors";
 import * as React from "react";
 import {
 	NativeModules,
@@ -12,8 +12,8 @@ import {
 	Text,
 	View,
 } from "react-native";
-import FaqCard from "../../components/cards/FaqCard";
-import { useTheme } from "../../theme/ThemeProvider";
+import FaqCard from "../components/cards/FaqCard";
+import { useTheme } from "../theme/ThemeProvider";
 
 interface Props {}
 
@@ -45,7 +45,7 @@ const Faqs: React.FC<Props> = () => {
 						<Feather
 							name="menu"
 							size={24}
-							style={{color:colors.text}}
+							style={{ color: colors.text }}
 							onPress={() => navigation.openDrawer()}
 						/>
 						<View style={styles.textGreetingWrapper}>

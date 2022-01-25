@@ -21,25 +21,27 @@ import { useTheme } from "../theme/ThemeProvider";
 const Tips: React.FC<{}> = () => {
 	const navigation = useNavigation<any>();
 	const { colors, isDark } = useTheme();
-	const[tips,setTips]= useState([]);
+	const [tips, setTips] = useState([]);
 	const { StatusBarManager } = NativeModules;
 	const STATUSBAR_HEIGHT = Platform.OS === "ios" ? 20 : StatusBarManager.HEIGHT;
 
-	useEffect(()=>{
-		getTipsFromAPI()
-	},[])
+	useEffect(() => {
+		getTipsFromAPI();
+	}, []);
 
-	function getTipsFromAPI(){
-		TipsAPI.get('top-headlines?country=us&apiKey=aa6a097fb9fb4509958fdabd1942e6d1')
-		.then(async function (response:any) {
-			setTips(response.data);
-		})
-		.catch(function(err){
-			console.log(err)
-		})
+	function getTipsFromAPI() {
+		TipsAPI.get(
+			"top-headlines?country=us&apiKey=aa6a097fb9fb4509958fdabd1942e6d1"
+		)
+			.then(async function (response: any) {
+				setTips(response.data);
+			})
+			.catch(function (err) {
+				console.log(err);
+			});
 	}
 
-	if (!tips){
+	if (!tips) {
 		return null;
 	}
 	return (
@@ -85,15 +87,16 @@ const Tips: React.FC<{}> = () => {
 									fontSize: 35,
 								}}
 							>
-								Research Tips 
+								Research Tips
 							</Text>
-              {/*Content*/}
-							<FlatList data={tips.articles}
-                keyExtractor={(item, index) => 'key' + index}
-                renderItem={({item}) => {
-                    return <TipsCard item = {item}/>
-                }}
-            />
+							{/*Content*/}
+							<FlatList
+								data={tips.articles}
+								keyExtractor={(item, index) => "key" + index}
+								renderItem={({ item }) => {
+									return <TipsCard item={item} />;
+								}}
+							/>
 						</View>
 					</View>
 				</View>

@@ -9,12 +9,16 @@ interface Props {}
 const FaqCard: React.FC<Props> = () => {
 	const { colors, isDark } = useTheme();
 	return (
-		<View style={{flex: 1,
-			paddingHorizontal: 15,
-			paddingVertical: 25,
-			backgroundColor: colors.primarypurple,
-			borderRadius: 23,
-			marginVertical: 5,}}>
+		<View
+			style={{
+				flex: 1,
+				paddingHorizontal: 15,
+				paddingVertical: 25,
+				backgroundColor: colors.primarypurple,
+				borderRadius: 23,
+				marginVertical: 5,
+			}}
+		>
 			<View
 				style={{
 					flexDirection: "row",
@@ -50,7 +54,6 @@ const FaqCard: React.FC<Props> = () => {
 export default FaqCard;
 
 const styles = StyleSheet.create({
-	
 	getStarted: {
 		width: "50%",
 		marginLeft: 15,

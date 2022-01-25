@@ -14,8 +14,8 @@ import FormInput from "../components/inputs/FormInput";
 import { Colors } from "../constants/colors";
 import { AntDesign } from "@expo/vector-icons";
 import { signIn } from "../utils/auth";
-import * as LocalAuthentication from 'expo-local-authentication';
-import * as Haptics from 'expo-haptics';
+import * as LocalAuthentication from "expo-local-authentication";
+import * as Haptics from "expo-haptics";
 interface Props {
 	navigation: any;
 }
@@ -28,10 +28,10 @@ const SignInScreen: React.FC<Props> = ({ navigation }) => {
 	const screenwidth = Dimensions.get("window").width;
 
 	const handleOnSubmit = () => {
-		Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)
+		Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
 		if (email != "" && password != "") {
-			LocalAuthentication.hasHardwareAsync().then
-			LocalAuthentication.authenticateAsync({}).then
+			LocalAuthentication.hasHardwareAsync().then;
+			LocalAuthentication.authenticateAsync({}).then;
 			signIn(email, password);
 		} else {
 		}
@@ -46,8 +46,8 @@ const SignInScreen: React.FC<Props> = ({ navigation }) => {
 					size={30}
 					color="white"
 					onPress={() => {
-						navigation.goBack()
-						Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)
+						navigation.goBack();
+						Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
 					}}
 				/>
 				<Text
@@ -116,8 +116,8 @@ const SignInScreen: React.FC<Props> = ({ navigation }) => {
 								fontSize: 15,
 							}}
 							onPress={() => {
-								navigation.navigate("EULAModal")
-								Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
+								navigation.navigate("EULAModal");
+								Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
 							}}
 						>
 							End User License Agreement

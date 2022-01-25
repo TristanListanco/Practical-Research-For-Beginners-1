@@ -1,9 +1,9 @@
 import { useNavigation } from "@react-navigation/native";
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 import Colors from "../../constants/colors";
 import { useTheme } from "../../theme/ThemeProvider";
-import * as Haptics from 'expo-haptics';
+import * as Haptics from "expo-haptics";
 interface Props {
 	item: any;
 }
@@ -15,19 +15,20 @@ const AssesmentCard: React.FC<Props> = ({}) => {
 	const [isLoading, setIsLoading] = useState(false);
 
 	const randomQuote = () => {
-    setIsLoading(true);
-    fetch("https://api.quotable.io/random").then(res => res.json()).then(result => {
-      
-      setQuote(result.content);
-      setAuthor(result.author);
-      setIsLoading(false);
-    })
-  }
+		setIsLoading(true);
+		fetch("https://api.quotable.io/random")
+			.then((res) => res.json())
+			.then((result) => {
+				setQuote(result.content);
+				setAuthor(result.author);
+				setIsLoading(false);
+			});
+	};
 
 	useEffect(() => {
-		Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy)
-    randomQuote();
-  }, []);
+		Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
+		randomQuote();
+	}, []);
 
 	return (
 		<View
@@ -65,7 +66,7 @@ const AssesmentCard: React.FC<Props> = ({}) => {
 							color: "white",
 						}}
 					>
-						{"-"+Author}
+						{"-" + Author}
 					</Text>
 				</View>
 			</View>

@@ -12,11 +12,11 @@ import {
 	StyleSheet,
 } from "react-native";
 
-import { Feather } from "@expo/vector-icons";
+import { Feather, Entypo } from "@expo/vector-icons";
 import { getQuizzes } from "../utils/database";
 import AssesmentCard from "../components/cards/AssesmentCard";
 import { useTheme } from "../theme/ThemeProvider";
-import * as Haptics from 'expo-haptics';
+import * as Haptics from "expo-haptics";
 interface Props {
 	navigation: any;
 }
@@ -68,17 +68,30 @@ const Quiz: React.FC<Props> = ({ navigation }) => {
 						marginTop: 15,
 					}}
 				>
-					<TouchableOpacity>
+					<TouchableOpacity
+						onPress={() => {
+							{
+								navigation.goBack();
+								Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+							}
+						}}
+					>
 						<Feather
 							name="arrow-left"
 							size={24}
 							style={{ color: colors.text }}
-							onPress={() => {{navigation.goBack() 
-                Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)}}}
 						/>
 					</TouchableOpacity>
-					<TouchableOpacity>
-						<Feather name="info" size={24} style={{ color: colors.text }} />
+
+					<TouchableOpacity
+						onPress={() => {
+							{
+								navigation.navigate("QuizStats");
+								Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+							}
+						}}
+					>
+						<Entypo name="bar-graph" size={24} style={{ color: colors.text }} />
 					</TouchableOpacity>
 				</View>
 
@@ -167,11 +180,13 @@ const Quiz: React.FC<Props> = ({ navigation }) => {
 									borderRadius: 50,
 									backgroundColor: colors.primarygreen + "20",
 								}}
-								onPress={() => {{
-                  Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
-									navigation.navigate("PlayQuiz", {
-										quizId: quiz.id,
-									})};
+								onPress={() => {
+									{
+										Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+										navigation.navigate("PlayQuiz", {
+											quizId: quiz.id,
+										});
+									}
 								}}
 							>
 								<Text

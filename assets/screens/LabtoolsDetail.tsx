@@ -1,14 +1,14 @@
 import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import Colors from "../constants/colors";
-import Snackbar from "react-native-snackbar"
+import Snackbar from "react-native-snackbar";
 import React, { useCallback, useMemo, useRef } from "react";
 import BottomSheet, {
 	BottomSheetBackdrop,
 	BottomSheetModal,
 	BottomSheetModalProvider,
 } from "@gorhom/bottom-sheet";
-import * as Haptics from 'expo-haptics';
+import * as Haptics from "expo-haptics";
 import AR from "../components/svg/AR";
 import {
 	Platform,
@@ -41,8 +41,6 @@ const LabtoolsDetail: React.FC<Props> = ({ route }) => {
 	const { StatusBarManager } = NativeModules;
 	const STATUSBAR_HEIGHT = Platform.OS === "ios" ? 20 : StatusBarManager.HEIGHT;
 
-	
-
 	return (
 		<SafeAreaView style={{ backgroundColor: colors.background, flex: 1 }}>
 			<ScrollView
@@ -69,8 +67,9 @@ const LabtoolsDetail: React.FC<Props> = ({ route }) => {
 								name="arrow-left"
 								size={24}
 								style={{ color: colors.text }}
-								onPress={() => {navigation.goBack()
-									Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)
+								onPress={() => {
+									navigation.goBack();
+									Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
 								}}
 							/>
 						</TouchableOpacity>
@@ -108,31 +107,33 @@ const LabtoolsDetail: React.FC<Props> = ({ route }) => {
 						alignItems: "flex-end",
 						paddingHorizontal: 40,
 					}}
-					onPress={() => {{
-						Snackbar.show({
-							text: 'Initializing Neural Engine...',
-							duration: Snackbar.LENGTH_LONG,
-						});
-						Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
-						
-						const url = `${item.labtool_ar_link}`;
-						const localFile = `${RNFS.DocumentDirectoryPath}/${url
-							.split("/")
-							.pop()}`;
+					onPress={() => {
+						{
+							Snackbar.show({
+								text: "Initializing Neural Engine...",
+								duration: Snackbar.LENGTH_LONG,
+							});
+							Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
 
-						const options = {
-							fromUrl: url,
-							toFile: localFile,
-							background: true, // Continue the download in the background after the app terminates (iOS only)
-							discretionary: true, // Allow the OS to control the timing and speed of the download to improve perceived performance  (iOS only)
-							cacheable: true, // Whether the download can be stored in the shared NSURLCache (iOS only, defaults to true)
-						};
+							const url = `${item.labtool_ar_link}`;
+							const localFile = `${RNFS.DocumentDirectoryPath}/${url
+								.split("/")
+								.pop()}`;
 
-						RNFS.downloadFile(options)
-							.promise.then(() => FileViewer.open(localFile))
-							.then(() => {})
-							.catch((error) => {});
-					}}}
+							const options = {
+								fromUrl: url,
+								toFile: localFile,
+								background: true, // Continue the download in the background after the app terminates (iOS only)
+								discretionary: true, // Allow the OS to control the timing and speed of the download to improve perceived performance  (iOS only)
+								cacheable: true, // Whether the download can be stored in the shared NSURLCache (iOS only, defaults to true)
+							};
+
+							RNFS.downloadFile(options)
+								.promise.then(() => FileViewer.open(localFile))
+								.then(() => {})
+								.catch((error) => {});
+						}
+					}}
 				>
 					<AR />
 				</TouchableOpacity>

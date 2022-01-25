@@ -1,5 +1,5 @@
-import { Feather} from "@expo/vector-icons";
-import React, { useState,useEffect} from "react";
+import { Feather } from "@expo/vector-icons";
+import React, { useState, useEffect } from "react";
 import {
 	Platform,
 	SafeAreaView,
@@ -16,7 +16,7 @@ import {
 } from "react-native";
 import Colors from "../constants/colors";
 
-import * as Haptics from 'expo-haptics';
+import * as Haptics from "expo-haptics";
 import HomeCard from "../components/cards/HomeCard";
 import researchTopics from "../data/LessonsData";
 import ResearchAssistantCard from "../components/cards/AssistantCardMenu";
@@ -26,36 +26,28 @@ import { useToast } from "react-native-toast-notifications";
 
 interface Props {
 	route: any;
-	navigation:any;
+	navigation: any;
 }
 
-
-const Home:React.FC<Props>  = ({navigation}) => {
+const Home: React.FC<Props> = ({ navigation }) => {
 	const [refreshing, setRefreshing] = useState(false);
 	const { colors, isDark } = useTheme();
 	const toast = useToast();
 	const [isWhatsNewModalVisible, setWhatsNewModalVisible] = useState("");
 
 	useEffect(() => {
-		navigation.navigate("Modal")
-		
-		
-    
-  }, []);
+		navigation.navigate("Modal");
+	}, []);
 
-	
-
-	
-	
 	const renderItem = ({ item }: { item: any }) => {
 		return (
 			<TouchableOpacity
 				key={item.id}
-				onPress={() =>{
-					Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)
+				onPress={() => {
+					Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
 					navigation.navigate("Lesson", {
 						item: item,
-					})
+					});
 				}}
 			>
 				<View
@@ -63,7 +55,7 @@ const Home:React.FC<Props>  = ({navigation}) => {
 						flex: 1,
 						paddingHorizontal: 20,
 						paddingVertical: 15,
-						justifyContent:'center',
+						justifyContent: "center",
 						backgroundColor: colors.elevated,
 						borderRadius: 11,
 						marginVertical: 8,
@@ -76,12 +68,18 @@ const Home:React.FC<Props>  = ({navigation}) => {
 							alignItems: "center",
 						}}
 					>
-						<View style={{ flexDirection: "row",justifyContent:'center',alignItems:'center' }}>
+						<View
+							style={{
+								flexDirection: "row",
+								justifyContent: "center",
+								alignItems: "center",
+							}}
+						>
 							<View
 								style={{
 									backgroundColor: colors.primarygreen + "20",
 									borderRadius: 10,
-									padding:15,
+									padding: 15,
 									justifyContent: "center",
 									alignItems: "center",
 									marginVertical: 7,
@@ -129,11 +127,9 @@ const Home:React.FC<Props>  = ({navigation}) => {
 	const STATUSBAR_HEIGHT = Platform.OS === "ios" ? 20 : StatusBarManager.HEIGHT;
 	const screenWidth = Dimensions.get("window").width;
 	let paddingsize = undefined;
-	if (screenWidth>=768){
-	 paddingsize= 20
+	if (screenWidth >= 768) {
+		paddingsize = 20;
 	}
-	
-		
 
 	return (
 		<SafeAreaView style={{ backgroundColor: colors.background, flex: 1 }}>
@@ -167,13 +163,12 @@ const Home:React.FC<Props>  = ({navigation}) => {
 								style={{ color: colors.text }}
 								onPress={() => navigation.openDrawer()}
 							/>
-						
-							
-							
 						</View>
 
 						<View style={styles.textGreetingWrapper}>
-							<Text style={styles.textGreeting}>Practical Research Grade 7</Text>
+							<Text style={styles.textGreeting}>
+								Practical Research Grade 7
+							</Text>
 							<Text
 								style={{
 									fontFamily: "SFProDisplay-Bold",
@@ -190,12 +185,11 @@ const Home:React.FC<Props>  = ({navigation}) => {
 							<HomeCard />
 							<View
 								style={{
-									flex:1,
-									alignContent:'space-around',
-									justifyContent:'center',
-									paddingHorizontal:paddingsize,
+									flex: 1,
+									alignContent: "space-around",
+									justifyContent: "center",
+									paddingHorizontal: paddingsize,
 									flexDirection: "row",
-									
 								}}
 							>
 								<ResearchAssistantCard />
@@ -239,16 +233,9 @@ const styles = StyleSheet.create({
 	},
 	searchBarWrapper: {
 		paddingTop: 15,
-	
 	},
-
-
 });
-
-
-
 
 function newFunction(toast) {
 	toast.show("Hello World");
 }
-

@@ -29,19 +29,18 @@ const About: React.FC<Props> = () => {
 	const { colors, isDark } = useTheme();
 	let paddingsize = undefined;
 	const screenWidth = Dimensions.get("window").width;
-	if (screenWidth>=768){
-	 paddingsize= 20
+	if (screenWidth >= 768) {
+		paddingsize = 20;
 	}
 	const renderItem = ({ item }: { item: any }) => {
 		return (
-			<TouchableOpacity >
+			<TouchableOpacity>
 				<View
 					style={{
 						flexDirection: "row",
-
 					}}
 				>
-					<View style={{ flexDirection: "column", marginVertical:5, }}>
+					<View style={{ flexDirection: "column", marginVertical: 5 }}>
 						<View
 							style={{ flexDirection: "row", marginLeft: 5, marginTop: 15 }}
 						>
@@ -49,9 +48,9 @@ const About: React.FC<Props> = () => {
 								style={{
 									backgroundColor: colors.primarygreen + "20",
 									borderRadius: 10,
-									justifyContent:'center',
-									alignItems:'center',
-									padding:10,
+									justifyContent: "center",
+									alignItems: "center",
+									padding: 10,
 								}}
 							>
 								<Feather
@@ -60,7 +59,6 @@ const About: React.FC<Props> = () => {
 									color="black"
 									style={{
 										color: colors.primarygreen,
-						
 									}}
 								/>
 							</View>
@@ -110,15 +108,14 @@ const About: React.FC<Props> = () => {
 								style={{
 									backgroundColor: colors.primarygreen + "20",
 									borderRadius: 10,
-									justifyContent:'center',
-									alignItems:'center',
-								padding:15
+									justifyContent: "center",
+									alignItems: "center",
+									padding: 15,
 								}}
 							>
 								<Feather
 									name="book"
 									size={24}
-								
 									style={{
 										color: colors.primarygreen,
 										alignItems: "center",
@@ -127,7 +124,13 @@ const About: React.FC<Props> = () => {
 							</View>
 
 							<View style={{ flexDirection: "column", marginLeft: 15 }}>
-								<Text style={{ fontFamily: "SFProDisplay-Bold", fontSize: 18,color:colors.text }}>
+								<Text
+									style={{
+										fontFamily: "SFProDisplay-Bold",
+										fontSize: 18,
+										color: colors.text,
+									}}
+								>
 									{item.title}
 								</Text>
 								<Text
@@ -164,7 +167,7 @@ const About: React.FC<Props> = () => {
 				{/* Header */}
 				<View
 					style={{
-						marginHorizontal:21,
+						marginHorizontal: 21,
 						marginTop: Platform.OS === "ios" ? 15 : STATUSBAR_HEIGHT,
 					}}
 				>
@@ -193,23 +196,22 @@ const About: React.FC<Props> = () => {
 							<AboutCard />
 							<View
 								style={{
-									flex:1,
-									alignContent:'space-around',
-									marginVertical:15,
-									justifyContent:'center',
-									paddingHorizontal:paddingsize,
+									flex: 1,
+									alignContent: "space-around",
+									marginVertical: 15,
+									justifyContent: "center",
+									paddingHorizontal: paddingsize,
 									flexDirection: "row",
-									
 								}}
 							>
 								<FeedbackCardMenu />
-								<FaqCardMenu/>
+								<FaqCardMenu />
 							</View>
 							<View
 								style={{
 									backgroundColor: colors.elevated,
 									paddingVertical: 5,
-									justifyContent:'center',
+									justifyContent: "center",
 									paddingHorizontal: 10,
 									borderRadius: 15,
 									marginTop: 5,
@@ -221,7 +223,7 @@ const About: React.FC<Props> = () => {
 
 										fontFamily: "SFProDisplay-Bold",
 										fontSize: 14,
-										marginTop:15,
+										marginTop: 15,
 										color: colors.text,
 									}}
 								>
@@ -259,11 +261,26 @@ const About: React.FC<Props> = () => {
 									keyExtractor={(item) => item.id}
 								/>
 							</View>
-							<View style={{alignItems:"center",paddingVertical:30}}>
-							<Text style={{color:colors.text,fontFamily:"SFProDisplay-Bold",opacity:0.5}}>Iligan City National High School</Text>
-							<Text style={{color:colors.text,fontFamily:"SFProDisplay-Bold",opacity:0.3}}>Copyright 2022</Text>
+							<View style={{ alignItems: "center", paddingVertical: 30 }}>
+								<Text
+									style={{
+										color: colors.text,
+										fontFamily: "SFProDisplay-Bold",
+										opacity: 0.5,
+									}}
+								>
+									Iligan City National High School
+								</Text>
+								<Text
+									style={{
+										color: colors.text,
+										fontFamily: "SFProDisplay-Bold",
+										opacity: 0.3,
+									}}
+								>
+									Copyright 2022
+								</Text>
 							</View>
-							
 						</View>
 					</View>
 				</View>

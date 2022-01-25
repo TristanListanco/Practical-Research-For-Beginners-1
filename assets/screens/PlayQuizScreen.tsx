@@ -21,11 +21,11 @@ import { useTheme } from "../theme/ThemeProvider";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { FirebaseFirestoreTypes } from "@react-native-firebase/firestore";
 interface Props {
-	navigation:any,
-	route:any,
+	navigation: any;
+	route: any;
 }
 
-const PlayQuizScreen:React.FC<Props> = ({ navigation,route }) => {
+const PlayQuizScreen: React.FC<Props> = ({ navigation, route }) => {
 	const [currentQuizId] = useState(route.params.quizId);
 	const [title, setTitle] = useState("");
 	const [questions, setQuestions] = useState([]);
@@ -38,9 +38,7 @@ const PlayQuizScreen:React.FC<Props> = ({ navigation,route }) => {
 	const [incorrectCount, setIncorrectCount] = useState(0);
 	const [isResultModalVisible, setIsResultModalVisible] = useState(false);
 
-	
-
-	const shuffleArray = (array:any) => {
+	const shuffleArray = (array: any) => {
 		for (let i = array.length - 1; i > 0; i--) {
 			// Generate random number
 			let j = Math.floor(Math.random() * (i + 1));
@@ -105,7 +103,7 @@ const PlayQuizScreen:React.FC<Props> = ({ navigation,route }) => {
 		}
 	};
 
-	const getOptionTextColor = (currentQuestion:any, currentOption:any) => {
+	const getOptionTextColor = (currentQuestion: any, currentOption: any) => {
 		if (currentQuestion.selectedOption) {
 			if (currentOption == currentQuestion.selectedOption) {
 				return Colors.white;

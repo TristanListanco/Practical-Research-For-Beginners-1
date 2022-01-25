@@ -1,6 +1,14 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { Dimensions, Image, Linking, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+	Dimensions,
+	Image,
+	Linking,
+	StyleSheet,
+	Text,
+	TouchableOpacity,
+	View,
+} from "react-native";
 import { Feather, Entypo } from "@expo/vector-icons";
 import { useTheme } from "../../theme/ThemeProvider";
 
@@ -22,24 +30,27 @@ const FeedbackCardMenu = () => {
 		smallCardWidth = screenWidth / 2.5;
 	}
 	return (
-		<TouchableOpacity style={{
-			backgroundColor: colors.primaryteal + "60",
-			borderRadius: 15,
-			width: screenWidth / 2.5,
-			alignSelf: 'flex-start',
-			marginRight:15,
-			paddingVertical: 15,
-			paddingHorizontal: 14,
-		}} 
-		onPress={() => Linking.openURL('mailto:tannyencina@gmail.com?subject=Practical Research For Beginners Feedback Report&body=My Feedback Report')}
-		
+		<TouchableOpacity
+			style={{
+				backgroundColor: colors.primaryteal + "60",
+				borderRadius: 15,
+				width: screenWidth / 2.5,
+				alignSelf: "flex-start",
+				marginRight: 15,
+				paddingVertical: 15,
+				paddingHorizontal: 14,
+			}}
+			onPress={() =>
+				Linking.openURL(
+					"mailto:tannyencina@gmail.com?subject=Practical Research For Beginners Feedback Report&body=My Feedback Report"
+				)
+			}
 		>
-		
 			<View
 				style={{
 					backgroundColor: colors.elevated,
 					height: "25%",
-					borderRadius: 20/2,
+					borderRadius: 20 / 2,
 					width: "30%",
 					opacity: 0.4,
 					justifyContent: "center",
@@ -73,7 +84,6 @@ const FeedbackCardMenu = () => {
 			>
 				Send your feedback and reports in our email
 			</Text>
-		
 		</TouchableOpacity>
 	);
 };

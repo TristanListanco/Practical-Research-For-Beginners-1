@@ -67,7 +67,7 @@ const WelcomeScreen: React.FC<Props> = () => {
 						<TouchableOpacity
 							onPress={() => {
 								navigation.navigate("SignInScreen");
-								Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy)
+								Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
 							}}
 						>
 							<Text
