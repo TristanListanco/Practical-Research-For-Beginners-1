@@ -11,37 +11,16 @@ import {
   StyleSheet,
   Text,
   View,
-  NativeModules,
 } from "react-native";
 import Colors from "../constants/colors";
-import TipsAPI from "../../apis/TipsAPI";
+
 import TipsCard from "../components/cards/TipsCard";
 import { useTheme } from "../theme/ThemeProvider";
 
-const Tips: React.FC<{}> = () => {
+const Tasks: React.FC<{}> = () => {
   const navigation = useNavigation<any>();
   const { colors, isDark } = useTheme();
-  const [tips, setTips] = useState([]);
-  const { StatusBarManager } = NativeModules;
-  const STATUSBAR_HEIGHT = Platform.OS === "ios" ? 20 : StatusBarManager.HEIGHT;
 
-  useEffect(() => {
-    getTipsFromAPI();
-  }, []);
-
-  function getTipsFromAPI() {
-    TipsAPI.get("top-headlines?country=us&apiKey=aa6a097fb9fb4509958fdabd1942e6d1")
-      .then(async function (response: any) {
-        setTips(response.data);
-      })
-      .catch(function (err) {
-        console.log(err);
-      });
-  }
-
-  if (!tips) {
-    return null;
-  }
   return (
     <SafeAreaView style={{ backgroundColor: colors.background, flex: 1 }}>
       <ScrollView
@@ -54,7 +33,7 @@ const Tips: React.FC<{}> = () => {
         <View
           style={{
             paddingHorizontal: 21,
-            marginTop: Platform.OS === "ios" ? 15 : STATUSBAR_HEIGHT,
+            marginTop: 15,
           }}
         >
           <View>
@@ -77,16 +56,8 @@ const Tips: React.FC<{}> = () => {
                   fontSize: 35,
                 }}
               >
-                Research Tips
+                Research Tasks
               </Text>
-              {/*Content*/}
-              <FlatList
-                data={tips.articles}
-                keyExtractor={(item, index) => "key" + index}
-                renderItem={({ item }) => {
-                  return <TipsCard item={item} />;
-                }}
-              />
             </View>
           </View>
         </View>
@@ -94,7 +65,7 @@ const Tips: React.FC<{}> = () => {
     </SafeAreaView>
   );
 };
-export default Tips;
+export default Tasks;
 const styles = StyleSheet.create({
   textGreetingWrapper: {
     paddingTop: Platform.OS === "ios" ? 20 : 15,
